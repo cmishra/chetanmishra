@@ -1,4 +1,5 @@
 const msg = document.querySelector('.current-message');
+const image_msg = document.querySelector('.gif-message');
 var exercise_img_obj = document.querySelector('.exercise-visual')
 
 var gifs = [
@@ -21,19 +22,20 @@ TODO
  - frame the images of various sizes
  - test out on phone 
  - make hip raise gif visible
- */ 
+ - make clock bigger
+ */
 
 mins = 0
 seconds = 0
 
-function pad_helper(n){
+function pad_helper(n) {
     return n.toString().padStart(2, '0')
 }
 
 
 function increment_timer(until_mins) {
     if (until_mins == mins) {
-        return 
+        return
     }
     seconds += 1
     if (seconds >= 60) {
@@ -44,15 +46,16 @@ function increment_timer(until_mins) {
     msg.innerText = `${pad_helper(mins)}:${pad_helper(seconds)}`
 }
 
-function stop_timer(interval){
+function stop_timer(interval) {
     clearInterval(interval)
 }
 
 function start_timer() {
-        msg.innerText = `${pad_helper(mins)}:${pad_helper(seconds)}`    
-        exercise_img_obj.src = gifs[0]
-        setInterval(increment_timer, 1000, 11)
+    image_msg.innerText = ''
+    msg.innerText = `${pad_helper(mins)}:${pad_helper(seconds)}`
+    exercise_img_obj.src = gifs[0]
+    setInterval(increment_timer, 1000, 11)
 }
 
 const button = document.querySelector('.start-timer')
-button.addEventListener('click', start_timer, {once: true})
+button.addEventListener('click', start_timer, { once: true })

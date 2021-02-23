@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>9-minute Workout</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<header>
-    <h1>
-        NYTimes 9-minute Workout Clock
-    </h1>
-    <p>
-        An unofficial webapp for <a href="https://www.nytimes.com/guides/well/strength-training-plyometrics">NYTimes</a>
-        9-minute workout
-    </p>
-</header>
 
 <body>
-
-    <button class='start-timer'>
-        Click here to start!
-    </button>
-<p class='current-message'>
-    You haven't started yet!
-</p>
-<img class ='exercise-visual' src='.'>
-<script src='./my-script.js'></script>    
-
+    <div class='page-container'>
+        <div class='content-wrapper'>
+            <header>
+                <h1>
+                    NYTimes 9-minute Workout Clock
+                </h1>
+            </header>
+            <div class='main-contents'>
+                <div class='clock-container'>
+                    <p class='current-message'>
+                        00:00
+                    </p>
+                </div>
+                <div class='image-container'>
+                    <p class='gif-message'>
+                        You haven't started yet!
+                    </p>
+                    <img class='exercise-visual'>
+                </div>
+            </div>
+            <button class='start-timer'>
+                Start
+            </button>
+        </div>
+        <footer class='footer-statement'>
+            An unofficial webapp for <a
+                href="https://www.nytimes.com/guides/well/strength-training-plyometrics">NYTimes</a>
+            9-minute workout
+        </footer>
+    </div>
 </body>
+<script src='./my-script.js'></script>
 
 </html>
