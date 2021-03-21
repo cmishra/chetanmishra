@@ -1,0 +1,8 @@
+
+# js dependencies and build files
+node_modules
+.cache
+dist
+
+# mac unzip files
+.DS_STORE

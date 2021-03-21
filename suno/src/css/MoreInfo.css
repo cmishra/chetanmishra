@@ -1,0 +1,32 @@
+.more-info {
+  margin: 5vh 15vw 5vh 15vw;
+  padding: 5vh 2.5vw 5vh 2.5vw;
+  background-color: #f8f9fa;
+  border-radius: 25px;
+}
+
+.learn-more {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  grid-gap: 5vw;
+}
+
+.learn-more-header {
+  margin-bottom: 5vh;
+}
+
+.learn-more-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.begin-journey-button {
+  margin: auto;
+  display: block;
+  size: "lg";
+  width: 50%;
+}

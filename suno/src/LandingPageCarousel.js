@@ -25,14 +25,20 @@ const LandingPageCarousel = () => {
           width="100%"
           src={require("../assets/landing-page-carousel-img-en.jpg")}
         />
-        <LandingCarouselCaption text="Come, listen!"></LandingCarouselCaption>
+        <a href="#learn-more">
+          {" "}
+          <LandingCarouselCaption text="Come, listen!"></LandingCarouselCaption>{" "}
+        </a>
       </Carousel.Item>
       <Carousel.Item>
         <img
           width="100%"
           src={require("../assets/landing-page-carousel-img-fr.jpg")}
         />
-        <LandingCarouselCaption text="Viens, entends!"></LandingCarouselCaption>
+        <a href="#learn-more">
+          {" "}
+          <LandingCarouselCaption text="Viens, entends!"></LandingCarouselCaption>
+        </a>
       </Carousel.Item>
 
       <Carousel.Item>
@@ -40,7 +46,10 @@ const LandingPageCarousel = () => {
           width="100%"
           src={require("../assets/landing-page-carousel-img-hi.jpg")}
         />
-        <LandingCarouselCaption text="Aao, suno!"></LandingCarouselCaption>
+        <a href="#learn-more">
+          {" "}
+          <LandingCarouselCaption text="Aao, suno!"></LandingCarouselCaption>
+        </a>
       </Carousel.Item>
     </Carousel>
   );
