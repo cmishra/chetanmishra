@@ -19,7 +19,7 @@ const LandingCarouselCaption = (props) => {
 
 const LandingPageCarousel = () => {
   return (
-    <Carousel fade controls={false} hover={false}>
+    <Carousel fade controls={false} pause={false}>
       <Carousel.Item>
         <img
           width="100%"
