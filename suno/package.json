@@ -18,7 +18,7 @@
     "eslint-plugin-react": "^7.20.2",
     "eslint-plugin-react-hooks": "^4.0.4",
     "parcel-bundler": "^1.12.4",
-    "styled-jsx": "^3.4.4"
+    "styled-jsx": "^5.1.0"
   },
   "dependencies": {
     "@frontendmasters/pet": "^1.0.3",
