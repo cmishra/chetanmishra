@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "fixJson.indentationSpaces": 2,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+}
