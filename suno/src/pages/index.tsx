@@ -1,14 +1,4 @@
-import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 
-import { api } from "../utils/api";
-
-/* This example requires Tailwind CSS v3.0+ */
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LandingNavBar from "../components/landingNavBar";
 import LandingPageContainer from "../components/landingPageContainer";
 
