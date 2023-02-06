@@ -18,4 +18,9 @@ export const exampleRouter = createTRPCRouter({
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
   }),
+  submitOption: publicProcedure
+    .input(z.object({ prompt: z.string(), option: z.string() }))
+    .query(({ input }) => {
+      return input.prompt + " " + input.option;
+    }),
 });

@@ -1,9 +1,10 @@
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
+import { api } from "../utils/api";
 
-export default function LandingNavBar() {
+export default function AppNavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: sessionData } = useSession();
 
@@ -30,33 +31,14 @@ export default function LandingNavBar() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden pr-6 lg:flex lg:justify-end">
-          <a
-            href="/about-us"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            About us
-          </a>
-        </div>
         <div className="hidden lg:flex lg:justify-end ">
           <button
-            onClick={sessionData ? undefined : () => void signIn()}
-            className={
-              "text-sm font-semibold leading-6 text-gray-900 " +
-              (sessionData ? "hidden" : "")
-            }
+            onClick={sessionData ? () => void signOut() : () => void signIn()}
+            className="text-sm font-semibold leading-6 text-gray-900"
           >
-            Log in<span aria-hidden="true">→</span>
+            {sessionData ? "Log out" : "Log in"}
+            <span aria-hidden="true">→</span>
           </button>
-          <a
-            href="/app"
-            className={
-              "text-sm font-semibold leading-6 text-gray-900 " +
-              (sessionData ? "" : "hidden")
-            }
-          >
-            Keep Learning <span aria-hidden="true">→</span>
-          </a>
         </div>
       </nav>
       <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -91,14 +73,6 @@ export default function LandingNavBar() {
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
                 >
                   Log in
-                </a>
-              </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
-                >
-                  About us
                 </a>
               </div>
             </div>
