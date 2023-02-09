@@ -1,11 +1,14 @@
-import type { ReactNode } from "react";
+import { useState } from "react";
 import { api } from "../utils/api";
 
 export default function IndexCardApp() {
-  const prompt = "The Coldest Sunset";
+  const [option, setOption] = useState<string>()
+  const { data } = api.example.getFlashCardCombo.useQuery()
+  console.log({ data })
+  const submittedOptionResult = api.example.submitFlashCardOption.useQuery({ prompt: data?.prompt ?? '', option: option! }, { enabled: Boolean(option) })
+  console.log({ data: submittedOptionResult.data })
   const generateOnClick = async (option: string) => {
-    api.useQueries("example.submitOption", { prompt, option });
-    console.log(`Submitted ${option} for ${prompt}`);
+    setOption(option)
   };
   return (
     <div className="flex flex-col items-center justify-center py-56">
@@ -16,9 +19,9 @@ export default function IndexCardApp() {
         </div>
       </div>
       <div className="px-6 pt-12 pb-2">
-        <OptionBackground option="Aah" onClick={() => generateOnClick("Aah")} />
-        <OptionBackground option="Bah" onClick={() => generateOnClick("Bah")} />
-        <OptionBackground option="Cat" onClick={() => generateOnClick("Cat")} />
+        {data?.options.map(o => {
+          return <OptionBackground option={o} onClick={() => generateOnClick(o)} />
+        })}
       </div>
     </div>
   );
