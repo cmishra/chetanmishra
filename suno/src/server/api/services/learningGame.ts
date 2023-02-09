@@ -1,4 +1,5 @@
 import { TRPCError } from "@trpc/server";
+import assert from "node:assert";
 import { z } from "zod";
 import { publicProcedure } from "../trpc";
 
@@ -69,10 +70,19 @@ export const submitFlashCardOption = publicProcedure
 export const getFlashCardCombo = publicProcedure.output(z.object({ prompt: z.string(), options: z.array(z.string()) })).query(() => {
   const numOptions = 3
   const promptWithDevanagiri = Math.random() < 0.5
-  const optionPairs = Array(numOptions).map(_ => MAPPINGS[Math.floor(Math.random() * MAPPINGS.length)]!)
+  const optionPairs = Array(numOptions).map(_ => {
+    const optionPair = MAPPINGS[Math.floor(Math.random() * MAPPINGS.length)]
+    assert(optionPair != undefined, 'Index should be in the range of the array')
+    return optionPair
+  })
   const promptIndex = Math.floor(Math.random() * numOptions)
-  const options = optionPairs.map(p => promptWithDevanagiri ? p[1] : p[0])
-  const prompt = promptWithDevanagiri ? optionPairs[promptIndex]![0] : optionPairs[promptIndex]![1]
+  const promptPair = optionPairs[promptIndex]
+  if (promptPair == undefined) {
+    throw new TRPCError({ message: 'Error sampling prompt', code: 'INTERNAL_SERVER_ERROR' })
+  }
+  const options = optionPairs.map(p => promptWithDevanagiri ? p[1] : p[0]
+  )
+  const prompt = promptWithDevanagiri ? promptPair[0] : promptPair[1]
   return {
     prompt, options
   }

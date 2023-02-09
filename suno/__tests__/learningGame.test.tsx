@@ -36,7 +36,11 @@ describe('submitFlashCardOption', () => {
 })
 
 describe('getFlashCardCombo', () => {
-  test('Ensure prompt and options are different types', () => {
-
+  test('Ensure prompt and options are different types', async () => {
+    const example = await caller!.example.getFlashCardCombo()
+    const matchesAlphabet = (s: string) => s.match('[a-z]+')
+    const promptIsWesternAlphabet = matchesAlphabet(example.prompt)
+    const optionsAreWesternAlphabet = example.options.reduce((prevVal, s) => (matchesAlphabet(s) || prevVal), false)
+    expect((promptIsWesternAlphabet && !optionsAreWesternAlphabet) || (!promptIsWesternAlphabet && optionsAreWesternAlphabet))
   })
 })
